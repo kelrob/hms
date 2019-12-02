@@ -12,5 +12,5 @@ PHP 7.1
 ## Laravel Version
 5.7
 
-## Security 
+## Security/Authentication
 Sentinel
