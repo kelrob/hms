@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'Security\LoginController@index');
 
 # Route to Register the admin
 Route::get('/admin-register', 'Security\AdminController@index');
@@ -22,8 +24,12 @@ Route::post('/admin-register', 'Security\AdminController@registerAdmin');
 # Route to Login
 Route::get('/login', 'Security\LoginController@index');
 Route::post('/login', 'Security\LoginController@loginUser');
+Route::post('/change-password', 'Security\LoginController@changePassword');
 
-# Route to Login
+# Captcha
+Route::get('refreshcaptcha', 'Security\LoginController@refreshCaptcha');
+
+# Route to Logout
 Route::get('/logout', 'Security\LoginController@logout');
 
 

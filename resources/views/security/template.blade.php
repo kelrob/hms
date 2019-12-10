@@ -44,6 +44,25 @@
         speed: 500
     });
 </script>
+<script type="text/javascript">
+    $('#refresh').click(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type:'GET',
+            url:'refreshcaptcha',
+            success:function(data){
+                $('#cap').html(data.captcha);
+                //console.log(data.captcha)
+                //$(".captcha span");
+
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

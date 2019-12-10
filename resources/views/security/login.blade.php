@@ -23,6 +23,15 @@
                     <input type="password" class="form-control" name="password" placeholder="Login Pass">
                 </div>
                 <div class="form-group">
+                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                </div>
+                <div class="form-group">
+                    <div class="captcha">
+                        <span id="cap">{!! captcha_img() !!}</span>
+                        <button type="button" class="btn btn-success" id="refresh"><i class="fa fa-refresh"></i></button>
+                    </div>
+                </div>
+                <div class="form-group">
                     <button class="btn btn-theme btn-block" name="login_alien" type="submit">SIGN IN <i class="fa fa-lock"></i></button>
                 </div>
                 <hr>
@@ -30,5 +39,4 @@
             </div>
         </form>
     </section>
-
 @endsection
