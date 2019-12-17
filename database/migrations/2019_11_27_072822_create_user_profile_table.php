@@ -25,6 +25,8 @@ class CreateUserProfileTable extends Migration
             $table->string('blood_group')->nullable();
             $table->string('profile_type', 20);
             $table->string('doc_dept')->nullable();
+            $table->integer('security_question')->unsigned()->nullable();
+            $table->text('security_answer')->nullable();
 
             $table->timestamps();
         });

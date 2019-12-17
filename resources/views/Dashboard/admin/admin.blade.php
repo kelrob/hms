@@ -1,5 +1,15 @@
 @extends('Dashboard.template')
 
+@php
+    $referer = Request::server('HTTP_REFERER');
+    if (strpos($referer,'login') !== false || strpos($referer,'authenticate') !== false || strpos($referer,'doctors') !== false || strpos($referer,'patients') !== false || strpos($referer,'doctor') !== false || strpos($referer,'patientgit') !== false)  {
+        $allow = true;
+    } else {
+        header("Location: " . URL::to('/logout'), true, 302);
+        exit();
+    }
+@endphp
+
 @section('wrapper')
 
     <section class="wrapper">

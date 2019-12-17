@@ -23,7 +23,8 @@ Route::post('/admin-register', 'Security\AdminController@registerAdmin');
 
 # Route to Login
 Route::get('/login', 'Security\LoginController@index');
-Route::post('/login', 'Security\LoginController@loginUser');
+Route::post('/login', 'Security\LoginController@loginUser')->name('login');
+Route::post('/authenticate', 'Security\LoginController@authenticateAdmin');
 Route::post('/change-password', 'Security\LoginController@changePassword');
 
 # Captcha

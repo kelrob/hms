@@ -4,6 +4,7 @@
       <w>endforeach</w>
       <w>fillable</w>
       <w>fullname</w>
+      <w>refreshcaptcha</w>
     </words>
   </dictionary>
 </component>

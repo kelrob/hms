@@ -14,7 +14,21 @@ class UserProfile extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'user_id', 'fullname', 'email', 'phone', 'sex', 'age', 'address', 'blood_group', 'profile_type', 'doc_dept'];
+    protected $fillable = [
+        'id',
+        'user_id',
+        'fullname',
+        'email',
+        'phone',
+        'sex',
+        'age',
+        'address',
+        'blood_group',
+        'profile_type',
+        'doc_dept',
+        'security_question',
+        'security_answer'
+    ];
 
     public function Users()
     {

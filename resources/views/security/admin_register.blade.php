@@ -48,6 +48,18 @@
                     <input type="email" class="form-control" name="email" placeholder="Email">
                 </div>
                 <div class="form-group">
+                    <label for="sec_questions"><b>Security Question 1</b></label>
+                    <select name="security_question" class="form-control" id="sec_questions">
+                        @foreach($securityQuestions as $questions)
+                            <option value="{{ $questions->id }}">{{ $questions->question_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sec_answer"><b>Answer</b></label>
+                    <input type="text" name="security_answer" class="form-control" id="sec_answer">
+                </div>
+                <div class="form-group">
                     <button class="btn btn-theme btn-block"  type="submit">CREATE ADMIN <i class="fa fa-lock"></i></button>
                 </div>
             </div>

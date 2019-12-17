@@ -9,18 +9,22 @@ use Validator;
 use Sentinel;
 use App\Models\User;
 use App\Models\UserProfile;
+use App\Models\SecurityQuestion;
 
 class AdminController extends Controller
 {
     public function index() {
         $data = Roles::where('name', 'Admin')->get();
-        return view('security.admin_register')->with('data', $data);
+        $securityQuestions = SecurityQuestion::all();
+
+        return view('security.admin_register', compact('data', 'securityQuestions'));
     }
 
 
     public function registerAdmin(Request $request) {
 
         $data = Roles::where('name', 'Admin')->get();
+        $securityQuestions = SecurityQuestion::all();
         $info = $request->all();
         $roleId =  $request->input('identity');
 
@@ -44,7 +48,9 @@ class AdminController extends Controller
                     'login_id' => 'required|unique:users|max:100',
                     'password' => 'required|min:8|max:128',
                     'fullname' => 'required',
-                    'email' => 'required|email'
+                    'email' => 'required|email',
+                    'security_question' => 'required|numeric',
+                    'security_answer' => 'required'
                 ], $errorMessages
             );
 
@@ -56,7 +62,7 @@ class AdminController extends Controller
                 );
 
                 $response = $returnData;
-                return view('security.admin_register', compact('data', 'response'));
+                return view('security.admin_register', compact('data', 'response', 'securityQuestions'));
             }
 
             $user = Sentinel::registerAndActivate($info);
@@ -69,7 +75,9 @@ class AdminController extends Controller
                 [
                     'fullname' => $request->fullname,
                     'email' => $request->email,
-                    'profile_type' => 'admin'
+                    'profile_type' => 'admin',
+                    'security_question' => $request->security_question,
+                    'security_answer' => strtolower($request->security_answer)
                 ]
             );
 
@@ -80,7 +88,7 @@ class AdminController extends Controller
             $newUser->userProfile()->save($profile);
 
             $response = 'Admin Registered Successfully';
-            return view('security.admin_register', compact('data', 'response'));
+            return view('security.admin_register', compact('data', 'response', 'securityQuestions'));
 
         }
     }

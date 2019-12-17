@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Security;
 
+use App\Models\SecurityQuestion;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,11 +20,13 @@ class LoginController extends Controller
     }
 
     public function loginUser(Request $request) {
-        Sentinel::disableCheckpoints();
+        //Sentinel::disableCheckpoints();
 
         $errorMessages = [
             'login_id.required' => 'Login Id is required',
-            'password.required' => 'Password is Required'
+            'password.required' => 'Password is Required',
+            'captcha.required' => 'Captcha is Required',
+            'captcha.captcha' => 'Captcha entered does not match with Captcha'
         ];
 
         $validateData = Validator::make($request->all(),
@@ -71,7 +75,14 @@ class LoginController extends Controller
         if (Sentinel::check()) {
 
             if (Sentinel::getUser()->roles->first()->name == 'Admin') {
-                return redirect(url('/admin'));
+
+                $userProfile = UserProfile::find(Sentinel::getUser()->id);
+                $question = SecurityQuestion::find($userProfile->security_question);
+                $questionId = $question->id;
+                $securityQuestion = $question->question_name;
+
+
+                return view('security.security_question', compact('securityQuestion', 'questionId'));
             } else if (Sentinel::getUser()->roles->first()->name == 'Doctor') {
 
                 if (Sentinel::getUser()->login_count == 0) {
@@ -166,7 +177,60 @@ class LoginController extends Controller
         }
 
 
-        dd($user->password);
+        //dd($user->password);
+    }
+
+    public function authenticateAdmin(Request $request) {
+
+        # Get the logged in User Info
+        $user = Sentinel::getUser();
+
+        # Logged User Profile in an array
+        $userProfile = UserProfile::find(Sentinel::getUser()->id);
+
+        $userSecurityAnswer = $userProfile->security_answer;
+        $userSecurityQuestion = $userProfile->security_question;
+
+        # Get full info question
+        $question = SecurityQuestion::find($userProfile->security_question);
+        $questionId = $question->id;
+        $securityQuestion = $question->question_name;
+
+        $question = $request->question;
+        $answer = $request->answer;
+
+
+        $validateData = Validator::make($request->all(),
+            [
+                'question' => 'required|numeric',
+                'answer' => 'required',
+            ]
+        );
+
+        if ($validateData->fails()) {
+            $returnData = array(
+                'status' => 'error',
+                'message' => 'Please review fields',
+                'errors' => $validateData->errors()->all()
+            );
+
+            $response = $returnData;
+            return view('security.security_question', compact('response', 'questionId', 'securityQuestion'));
+        }
+
+        if (strtolower($answer) == $userSecurityAnswer && $question == $userSecurityQuestion) {
+            return redirect(url('/admin'));
+        } else {
+
+            $response = array(
+                'status' => 'error',
+                'message' => 'Please review fields',
+                'errors' => ['Authentication Failed']
+            );
+
+            return view('security.security_question', compact('response', 'questionId', 'securityQuestion'));
+        }
+
     }
 
     public function logout() {
