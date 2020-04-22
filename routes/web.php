@@ -15,14 +15,15 @@
     return view('welcome');
 });*/
 
-Route::get('/', 'Security\LoginController@index');
+Route::get('/', 'PublicController@index');
+Route::get('/view-doctors', 'PublicController@doctors')->name('doctors');
 
 # Route to Register the admin
 Route::get('/admin-register', 'Security\AdminController@index');
 Route::post('/admin-register', 'Security\AdminController@registerAdmin');
 
 # Route to Login
-Route::get('/login', 'Security\LoginController@index');
+Route::get('/login', 'Security\LoginController@index')->name('login');
 Route::post('/login', 'Security\LoginController@loginUser')->name('login');
 Route::post('/authenticate', 'Security\LoginController@authenticateAdmin');
 Route::post('/change-password', 'Security\LoginController@changePassword');
