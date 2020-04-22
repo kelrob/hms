@@ -18,7 +18,8 @@ class CreateUserProfileTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('fullname');
             $table->string('email')->nullable();
-            $table->string('phone', '100')->nullable();
+            $table->string('avatar', 255)->nullable();
+            $table->string('phone', 100)->nullable();
             $table->string('sex', 10)->nullable();
             $table->integer('age')->nullable();
             $table->text('address')->nullable();

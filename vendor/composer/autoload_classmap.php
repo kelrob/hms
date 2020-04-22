@@ -19,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\Dashboard\\PatientController' => $baseDir . '/app/Http/Controllers/Dashboard/PatientController.php',
     'App\\Http\\Controllers\\Extras\\AppointmentController' => $baseDir . '/app/Http/Controllers/Extras/AppointmentController.php',
     'App\\Http\\Controllers\\Extras\\PrescriptionController' => $baseDir . '/app/Http/Controllers/Extras/PrescriptionController.php',
+    'App\\Http\\Controllers\\PublicController' => $baseDir . '/app/Http/Controllers/PublicController.php',
     'App\\Http\\Controllers\\Security\\AdminController' => $baseDir . '/app/Http/Controllers/Security/AdminController.php',
     'App\\Http\\Controllers\\Security\\LoginController' => $baseDir . '/app/Http/Controllers/Security/LoginController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

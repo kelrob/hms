@@ -436,6 +436,7 @@ class ComposerStaticInit5bb3d31121918786f911a744bffaf361
         'App\\Http\\Controllers\\Dashboard\\PatientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/PatientController.php',
         'App\\Http\\Controllers\\Extras\\AppointmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Extras/AppointmentController.php',
         'App\\Http\\Controllers\\Extras\\PrescriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Extras/PrescriptionController.php',
+        'App\\Http\\Controllers\\PublicController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublicController.php',
         'App\\Http\\Controllers\\Security\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Security/AdminController.php',
         'App\\Http\\Controllers\\Security\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Security/LoginController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

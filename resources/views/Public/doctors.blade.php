@@ -1,6 +1,5 @@
 @extends('Public.template')
 @section('main')
-
     <div class="hero-wrap" style="background-image: url('template/images/bg_6.jpg'); background-attachment:fixed;">
         <div class="overlay"></div>
         <div class="container">
