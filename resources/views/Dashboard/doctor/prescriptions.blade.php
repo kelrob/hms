@@ -93,7 +93,10 @@
                             <div class="form-group">
                                 <label for="drug" class="control-label col-md-3"><span class="pull-right">Drug Name</span></label>
                                 <div class="col-md-7">
-                                    <input type="text" id="drug" name="drug" class="form-control" required>
+                                    <select name="drug" class="form-control" id="drug">
+                                        <option value="">Select Drug</option>
+                                        <option value="">Benylin</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-2"></div>
                             </div>

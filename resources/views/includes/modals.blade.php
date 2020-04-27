@@ -65,6 +65,11 @@
                             <select class="form-control" id="department" name="department" required>
                                 <option value="">Select Department</option>
                                 <option value="surgery">Surgery</option>
+                                <option value="neurologist">Neurologist</option>
+                                <option value="diagnostic">Diagnostic</option>
+                                <option value="dentist">Dentist</option>
+                                <option value="ophthalmology">Ophthalmology</option>
+                                <option value="emergency">Emergency</option>
                                 <option value="cardiologist">Cardiologist</option>
                             </select>
                         </div>
