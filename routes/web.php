@@ -17,6 +17,7 @@
 
 Route::get('/', 'PublicController@index');
 Route::get('/view-doctors', 'PublicController@doctors')->name('doctors');
+Route::get('/view-departments', 'PublicController@departments')->name('departments');
 
 # Route to Register the admin
 Route::get('/admin-register', 'Security\AdminController@index');

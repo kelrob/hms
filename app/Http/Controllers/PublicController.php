@@ -14,4 +14,8 @@ class PublicController extends Controller
     function doctors() {
         return view('Public.doctors');
     }
+
+    function departments() {
+        return view('Public.departments');
+    }
 }

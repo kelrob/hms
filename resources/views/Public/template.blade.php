@@ -37,11 +37,10 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="" class="nav-link">Departments</a></li>
-                <li class="nav-item"><a href="{{ route('doctors') }}" class="nav-link">Doctors</a></li>
 
+                <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{{ route('departments') }}" class="nav-link">Departments</a></li>
+                <li class="nav-item"><a href="{{ route('doctors') }}" class="nav-link">Doctors</a></li>
                 <li class="nav-item cta"><a href="{{ route('login') }}" class="nav-link"><span>LOGIN</span></a></li>
             </ul>
         </div>

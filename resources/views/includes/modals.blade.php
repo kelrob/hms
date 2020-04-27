@@ -13,7 +13,7 @@
                 </div>
                 <div class="alert alert-success" id="" style="display:none; font-weight: bold" align="center"></div>
                 <div class="alert alert-danger" id="" style="display:none; font-weight: bold" align="center"></div>
-                <form class="form-horizontal  style-form" method="post" action="{{ url('/doctors/post') }}" id="addDoctorForm">
+                <form class="form-horizontal  style-form" method="post" action="{{ url('/doctors/post') }}" id="addDoctorForm" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name" class="control-label col-md-3"><span class="pull-right">Name</span></label>
@@ -28,6 +28,15 @@
                         </label>
                         <div class="col-md-7">
                             <input type="text" id="email" name="email" class="form-control input-sm" required>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="file" class="control-label col-md-3">
+                            <span class="pull-right">Image</span>
+                        </label>
+                        <div class="col-md-7">
+                            <input type="file" id="file" name="file" class="form-control input-sm" required>
                         </div>
                         <div class="col-md-2"></div>
                     </div>

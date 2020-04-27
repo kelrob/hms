@@ -170,6 +170,16 @@ class AdminController extends Controller
             ]
         );
 
+        $image = $request->file('file');
+        $avatar = $image->getClientOriginalName();
+        $host = request()->getHttpHost();
+        $avatarName = time() . $avatar;
+        $avatarURL = $host . '/uploads/doctors/' . $avatarName;
+
+        // Define upload path
+        $destinationPath = public_path('/uploads/doctors'); // upload path
+        $image->move($destinationPath, $avatarName);
+
         # If the validation fails, return error response in a view
         if ($validateData->fails()) {
             $returnData = array(
@@ -196,6 +206,7 @@ class AdminController extends Controller
             [
                 'fullname' => $request->fullname,
                 'email' => $request->email,
+                'avatar' => $avatarURL,
                 'phone' => $request->phone,
                 'sex' => $request->sex,
                 'address' => $request->address,
