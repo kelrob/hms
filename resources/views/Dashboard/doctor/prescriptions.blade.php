@@ -95,7 +95,11 @@
                                 <div class="col-md-7">
                                     <select name="drug" class="form-control" id="drug">
                                         <option value="">Select Drug</option>
-                                        <option value="">Benylin</option>
+                                        <option value="Benylin Chesty Cough - 300ml">Benylin Chesty Cough - 300ml</option>
+                                        <option value="Paracetamol Capsule - 500mg">Paracetamol Capsule - 500mg</option>
+                                        <option value="Eye Drops 7.5ml">Eye Drops 7.5ml</option>
+                                        <option value="Iburofen 200mg">Iburofen 200mg</option>
+                                        <option value="Postinor 300g">Postinor 300g</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2"></div>
